@@ -14,16 +14,19 @@ function AddPlayer() {
     }
   };
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div className="list-item">
+      <form className="form" onSubmit={handleSubmit}>
         <input
+          className="form__input"
           type="text"
           name="playername"
           placeholder="Player Name"
         />
-        <button type="submit">Add Player</button>
+        <button className="btn" type="submit">
+          Add Player
+        </button>
       </form>
-    </>
+    </div>
   );
 }
 

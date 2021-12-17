@@ -1,4 +1,6 @@
 import React from 'react';
+import FlipMove from 'react-flip-move';
+
 import Player from './Player';
 
 function PlayerList(props) {
@@ -6,20 +8,28 @@ function PlayerList(props) {
   return (
     <>
       {playerData.length === 0 ? (
-        <p>Add a player to get start!</p>
+        <div className="list-item">
+          <div className="item__message">
+            Add a player to get start!
+          </div>
+        </div>
       ) : (
-        playerData.map((v) => {
-          return (
-            <Player
-              key={v._id}
-              _id={v._id}
-              name={v.name}
-              score={v.score}
-            />
-          );
-        })
+        <FlipMove maintainContainerHeight="true">
+          {playerData.map((v) => {
+            return (
+              <div key={v._id}>
+                <Player
+                  _id={v._id}
+                  name={v.name}
+                  score={v.score}
+                  rank={v.rank}
+                  position={v.position}
+                />
+              </div>
+            );
+          })}
+        </FlipMove>
       )}
-      {}
     </>
   );
 }

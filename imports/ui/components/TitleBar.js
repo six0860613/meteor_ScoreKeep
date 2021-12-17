@@ -2,10 +2,11 @@ import React from 'react';
 
 function TitleBar() {
   return (
-    <>
-      <h1>Score Keep</h1>
-      <h2>Insert Players</h2>
-    </>
+    <div className="title-bar">
+      <div className="wrapper">
+        <h1>Score Keep</h1>
+      </div>
+    </div>
   );
 }
 

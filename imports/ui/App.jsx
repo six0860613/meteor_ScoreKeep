@@ -5,7 +5,10 @@ import TitleBar from './components/TitleBar';
 import AddPlayer from './components/AddPlayer';
 import PlayerList from './components/PlayerList';
 
-import { Players_API } from '../api/players';
+import {
+  Players_API,
+  calcPlayerPositions,
+} from '../api/players';
 
 export const App = () => {
   const players = useTracker(() => {
@@ -17,12 +20,17 @@ export const App = () => {
       }
     ).fetch();
   });
+  const positionedPlayer = useTracker(() => {
+    return calcPlayerPositions(players);
+  });
 
   return (
     <>
       <TitleBar />
-      <AddPlayer />
-      <PlayerList playerData={players} />
+      <div className="wrapper">
+        <AddPlayer />
+        <PlayerList playerData={positionedPlayer} />
+      </div>
     </>
   );
 };
